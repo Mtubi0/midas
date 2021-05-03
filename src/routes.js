@@ -32,11 +32,12 @@ import {
   WorkOutlineOutlined,
   BlockOutlined
 } from "@material-ui/icons";
+import Wallet from "views/Wallet/Wallet";
 
 const dashboardRoutes = [
   {
     path: "/empty",
-    name: "Inicio",
+    name: "Sandbox",
     rtlName: "لوحة القيادة",
     icon: BlockOutlined,
     component: Empty,
@@ -55,7 +56,7 @@ const dashboardRoutes = [
     name: "Billetera",
     rtlName: "ملف تعريفي للمستخدم",
     icon: AccountBalanceWalletOutlined,
-    component: Empty,
+    component: Wallet,
     layout: "/admin",
   },
   {
