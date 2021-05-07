@@ -27,6 +27,7 @@ import Login from "views/Login/Login";
 import "assets/css/material-dashboard-react.css?v=1.9.0";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "theme";
+import PrivateRoute from "PrivateRoute ";
 
 const hist = createBrowserHistory();
 
@@ -34,7 +35,7 @@ ReactDOM.render(
   <ThemeProvider theme={theme}>
     <Router history={hist}>
       <Switch>
-        <Route path="/admin" component={Admin} />
+        <PrivateRoute path="/admin" component={Admin} />
         <Route path="/login" component={Login} />
       </Switch>
     </Router>
