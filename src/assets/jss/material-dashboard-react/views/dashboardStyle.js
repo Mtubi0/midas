@@ -78,7 +78,6 @@ const dashboardStyle = {
     },
   },
   operations: {
-    marginTop: "50px"
   },
 };
 
