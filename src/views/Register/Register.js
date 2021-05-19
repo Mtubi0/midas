@@ -53,17 +53,18 @@ const useStyles = theme  => ({
   },
 });
 
-class Login extends React.Component {
+class Register extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       formData: {
         email: '',
         password: '',
+        confirmPassword:''
       },
       submitted: false,
     };
@@ -87,17 +88,34 @@ class Login extends React.Component {
       this.setState({ formData });
   }
 
-  handleLogin(e) {
-    console.log("test")
+  handleRegister(e) {
 
     e.preventDefault();
     
     this.setState({ submitted: true })
 
-      authService.login(this.state.formData.email, this.state.formData.password).then(
+        // perform all neccassary validations
+    if(this.state.formData.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(this.state.formData.email)){
+        this.setState({
+        submitted: false,
+        message: "Invalid email address"
+        });
+    }else if (this.state.formData.password !== this.state.formData.confirmPassword) {
+        
+        this.setState({
+        submitted: false,
+        message: "Passwords don't match"
+        });
+        
+    }else {
+
+      // make API call
+      authService.register(this.state.formData.email, this.state.formData.password).then(
         () => {
-          this.props.history.push("/admin");
-          window.location.reload();
+          this.setState({
+            submitted: false,
+            successMessage: 'Please check your email'
+          });
         },
         error => {
           const resMessage =
@@ -114,6 +132,7 @@ class Login extends React.Component {
         }
       );
     
+    }
   }
 
   render() {
@@ -131,9 +150,9 @@ class Login extends React.Component {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Login
+              Registro
             </Typography>
-            <form className={classes.form} onSubmit={this.handleLogin.bind(this)}>
+            <form className={classes.form} onSubmit={this.handleRegister.bind(this)}>
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -160,15 +179,26 @@ class Login extends React.Component {
                 value={formData.password}
                 onChange={this.handleChange}
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Recordarme"
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="confirmPassword"
+                label="Confirmar contraseña"
+                type="password"
+                id="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={this.handleChange}
               />
               {this.state.message && (
                 <Alert severity="error">{this.state.message}</Alert>
               )}
+              {this.state.successMessage && (
+                <Alert severity="success">{this.state.successMessage}</Alert>
+              )}
               <Button color="primary" type="submit" fullWidth disabled={submitted}>
-                {(submitted && 'Your form is submitted!') || (!submitted && 'Ingresar')}
+                {(submitted && 'Your form is submitted!') || (!submitted && 'Registrar')}
               </Button>
               <Grid container>
                 <Grid item xs>
@@ -177,8 +207,8 @@ class Login extends React.Component {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/register" variant="body2">
-                    Deseo Registrarme
+                  <Link href="/login" variant="body2">
+                    Login
                   </Link>
                 </Grid>
               </Grid>
@@ -204,8 +234,8 @@ class Login extends React.Component {
 
 }
 
-Login.propTypes = {
+Register.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(useStyles)(Login);
+export default withStyles(useStyles)(Register);
