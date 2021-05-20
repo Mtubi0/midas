@@ -21,6 +21,7 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
+import authService from "services/auth.service";
 
 const useStyles = makeStyles(styles);
 
@@ -48,8 +49,10 @@ export default function AdminNavbarLinks() {
   const handleCloseProfile = () => {
     setOpenProfile(null);
   };
+
   const history = useHistory();
   const handleRedirectToLogin = () => {
+    authService.logout();
     let newRoute = "/login";
     history.push(newRoute);
   };
@@ -203,7 +206,7 @@ export default function AdminNavbarLinks() {
                       onClick={handleRedirectToLogin}
                       className={classes.dropdownItem}
                     >
-                      Log in
+                      Log out
                     </MenuItem>
                     <Divider light />
                     <MenuItem
