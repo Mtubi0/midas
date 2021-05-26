@@ -30,9 +30,11 @@ import {
   InfoOutlined,
   TrendingUpOutlined,
   WorkOutlineOutlined,
-  BlockOutlined
+  BlockOutlined,
+  DescriptionOutlined
 } from "@material-ui/icons";
 import Wallet from "views/Wallet/Wallet";
+import SDIB from "views/SDIB/SDIB";
 
 const dashboardRoutes = [
   {
@@ -49,6 +51,14 @@ const dashboardRoutes = [
     rtlName: "لوحة القيادة",
     icon: DashboardOutlined,
     component: Empty,
+    layout: "/admin",
+  },
+  {
+    path: "/sdib",
+    name: "SDIB",
+    rtlName: "SDIB",
+    icon: DescriptionOutlined,
+    component: SDIB,
     layout: "/admin",
   },
   {
@@ -106,15 +116,7 @@ const dashboardRoutes = [
     icon: InfoOutlined,
     component: Empty,
     layout: "/admin",
-  },
-  {
-    path: "/upgrade-to-pro",
-    name: "Upgrade To PRO",
-    rtlName: "التطور للاحترافية",
-    icon: Unarchive,
-    component: Empty,
-    layout: "/admin",
-  },
+  }
 ];
 
 export default dashboardRoutes;

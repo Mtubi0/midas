@@ -183,7 +183,7 @@ const sidebarStyle = (theme) => ({
     textAlign: "right",
   },
   whiteFont: {
-    color: whiteColor,
+    color: blackColor,
   },
   gold: {
     backgroundColor: primaryColor[0],

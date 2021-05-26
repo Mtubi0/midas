@@ -339,8 +339,12 @@ footer ul li a:hover {
   background-color: #00bcd4;
 }
 
+.fixed-plugin .badge-purple {
+  background-color: #5D2E8C;
+}
+
 .fixed-plugin .badge-green {
-  background-color: #4caf50;
+  background-color: #0B6E4F;
 }
 
 .fixed-plugin .badge-orange {
@@ -348,7 +352,7 @@ footer ul li a:hover {
 }
 
 .fixed-plugin .badge-red {
-  background-color: #f44336;
+  background-color: #CC2936;
 }
 
 .fixed-plugin h5 {

@@ -77,8 +77,7 @@ const dashboardStyle = {
       lineHeight: "1",
     },
   },
-  operations: {
-  },
+  operations: {},
 };
 
 export default dashboardStyle;

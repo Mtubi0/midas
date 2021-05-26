@@ -39,7 +39,7 @@ export default function Wallet() {
         </GridItem>
       </GridContainer>
       <GridContainer justify="center" alignItems="center">
-        <GridItem xs={12} sm={8} md={8}>
+        <GridItem xs={12} sm={6} md={6}>
           <div className={classes.operations}>
             <Button fullWidth color="success">
               Ingresar Dinero
@@ -56,7 +56,7 @@ export default function Wallet() {
             <CardHeader color="success">
               <h4 className={classes.cardTitleWhite}>Historial de Movimientos</h4>
               <p className={classes.cardCategoryWhite}>
-                Ingresos y extracciones realizadas
+                Ingresos y extracciones
               </p>
             </CardHeader>
             <CardBody>
