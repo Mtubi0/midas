@@ -28,6 +28,8 @@ import "assets/css/material-dashboard-react.css?v=1.9.0";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "theme";
 import PrivateRoute from "PrivateRoute ";
+import Register from "views/Register/Register";
+import EmailConfirmation from "views/EmailConfirmation/EmailConfirmation";
 
 const hist = createBrowserHistory();
 
@@ -37,6 +39,9 @@ ReactDOM.render(
       <Switch>
         <PrivateRoute path="/admin" component={Admin} />
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/emailConfirmation" component={EmailConfirmation}/> 
+
       </Switch>
     </Router>
   </ThemeProvider>,
